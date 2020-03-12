@@ -1,0 +1,211 @@
+*{
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Poppins');
+
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+.center{
+    position: relative;
+    width: 400px;
+}
+
+
+.center div{
+    position: relative;
+    height: 100px;
+    z-index: 2;
+    transform: skewY(-5deg);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: -1px;
+}
+
+.center div:nth-child(2),
+.center div:nth-child(4){
+    transform: skewY(14.5deg);
+        z-index: 1;
+}
+
+.center div:nth-child(4){
+    transform: skewY(25deg);
+    transform-origin: left;
+    top: -55px;
+}
+
+.center div:before{
+    content: '';
+    position: absolute;
+    width:100%;
+    height: 100%;
+}
+
+
+.center div:nth-child(1):before,
+.center div:nth-child(3):before{
+    background:linear-gradient(-160deg,#ff0058,#673ab7);
+    transform: scaleX(0);
+
+}
+
+.center div:nth-child(2):before,
+.center div:nth-child(4):before{
+    background:linear-gradient(-20deg,#ff0058,#38009c);
+    transform: scaleX(0)
+}
+
+.center div:nth-child(1):before{
+    animation: happy 1s linear forwards;
+    transform-origin:right;
+    animation-delay: 11s;
+}
+.center div:nth-child(2):before{
+    animation: happy 1s linear forwards;
+    transform-origin:left;
+    animation-delay: 12s;
+}
+.center div:nth-child(3):before{
+    animation: happy 1s linear forwards;
+    transform-origin:right;
+    animation-delay: 13s;
+}
+.center div:nth-child(4):before{
+    animation: happy 1s linear forwards;
+    transform-origin:left;
+    animation-delay: 14s;
+    width: 60%;
+    left: 0;
+}
+
+@keyframes happy {
+    0%{
+        transform: scaleX(0);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+}
+
+.center div h2{
+    position: relative;
+    z-index: 10;
+    color: #FFF;
+    opacity: 0;
+}
+
+.center div:nth-child(1) h2{
+    animation: text .5s linear forwards;
+    animation-delay: 12s;
+    font-size: 40px;
+}
+
+.center div:nth-child(3) h2{
+    animation: text .5s linear forwards;
+    animation-delay: 14s;
+    font-size: 80px;
+}
+
+@keyframes text {
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+
+/*
+    Start Loading
+ */
+
+.loading{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 15;
+    background: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: fadeOut 11s linear forwards;
+}
+
+@keyframes fadeOut  {
+    0%,91%{
+        opacity: 1;
+        visibility: visible;
+    }
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+.loading h2{
+    color:#000
+}
+
+.loading .bar{
+    position: relative;
+    width: 400px;
+    height: 40px;
+    border:1px solid #000 ;
+    margin: 0 20px;
+    padding: 20px;
+    background-color: transparent;
+}
+
+.loading .bar:before{
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #000;
+    transform: scaleX(0);
+    animation: last 10s linear forwards;
+    transform-origin: left;
+    z-index: 1;
+}
+
+@keyframes last {
+    0%{
+        transform: scaleX(0);
+    }
+    100%{
+        transform: scaleX(1);
+    }
+}
+
+.loading .bar:after{
+    content: 'Download';
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 3333;
+    font-weight: 800;
+    position: absolute;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 40px;
+    color: #FFF;
+    mix-blend-mode:difference;
+}
